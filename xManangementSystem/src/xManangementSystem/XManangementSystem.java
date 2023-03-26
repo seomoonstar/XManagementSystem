@@ -19,8 +19,22 @@ public class XManangementSystem {
 		    System.out.println("6.Exit");
 		    
 		    System.out.println("Select one number between 1 ~ 5: ");
-		    
 		    num = scan.nextInt();
+		    switch(num) {
+		    case 1:
+		    	System.out.print("In put Food Material Name: ");
+		    	String name = scan.next();
+		    	System.out.print("In put Food Deadline: ");
+		    	int month = scan.nextInt();
+		    	int date = scan.nextInt();
+		    	break;
+		    case 2:
+		    case 3:
+		    case 4:
+		    case 5:
+		    case 6:
+		    	break;
+		    }
 		    i++;
 		}
 	    
