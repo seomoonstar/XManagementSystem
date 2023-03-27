@@ -1,15 +1,13 @@
 package xManangementSystem;
-
 import java.util.Scanner;
-
 public class XManangementSystem {
 
 	public static void main(String[] args) {
 		int i = 0;
-		int count, num;
+		int count = 10 , num;
 		Scanner scan = new Scanner(System.in);
 		
-		count = scan.nextInt();
+		
 		while (i < count){
 			System.out.println("1.Add Food Materials");
 		    System.out.println("2.Delete Food Materials");
@@ -22,23 +20,25 @@ public class XManangementSystem {
 		    num = scan.nextInt();
 		    switch(num) {
 		    case 1:
-		    	System.out.print("In put Food Material Name: ");
-		    	String name = scan.next();
+		    	// 식재료 추가: 식재료 이름및 유통기한, 갯수등 입력
+		    	System.out.print("In put Food Name: ");
+		    	String nameA = scan.next();
 		    	System.out.print("In put Food Deadline: ");
 		    	int month = scan.nextInt();
 		    	int date = scan.nextInt();
 		    	break;
 		    case 2:
+		    	// 제가할 식재료 이름 입력
+		    	System.out.print("In put Food Name" );
+		    	String nameD = scan.next();
 		    case 3:
+		    	System.out.print("In put Food Name");
 		    case 4:
 		    case 5:
 		    case 6:
 		    	break;
 		    }
 		    i++;
-		}
-	    
-	     
+		}     
 	}
-
 }
