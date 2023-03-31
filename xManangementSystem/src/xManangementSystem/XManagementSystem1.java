@@ -24,14 +24,22 @@ public class XManagementSystem1 {
 		    case 1:
 		    	// 식재료 추가: 식재료 이름및 유통기한, 갯수등 입력
 		    	addFoodMaterials();
+		    	break;
 		    case 2:
 		    	// 제가할 식재료 이름 입력
-		    	System.out.print("In put Food Name" );
-		    	String nameD = scan.next();
+		    	deleteFoodMaterials();
+		    	break;
+
 		    case 3:
-		    	System.out.print("In put Food Name");
+		    	editFoodMaterials();
+		    	break;
+
 		    case 4:
+		    	viewFoodMaterials();
+		    	break;
+
 		    case 5:
+		    	continue;
 		    case 6:
 		    	break;
 		    }
@@ -44,10 +52,37 @@ public class XManagementSystem1 {
 		Scanner scan = new Scanner(System.in);
 		System.out.print("FoodM name: ");
         String FoodName = scan.nextLine();
+        
         System.out.print("FoodM deadline: ");
         String FoodDate = scan.nextLine();
 	    String[] YMD = FoodDate.split(".");
-	    System.out.print(YMD);
+	    for(int i = 0; i<YMD.length;i++) {
+	    	System.out.print(YMD[i]+" ");
+	    }
+	    
+	    System.out.print("FoodM origin: ");
+	    String Foodorgin = scan.next();
+	  
 	}
+	
+	public static void deleteFoodMaterials() {
+		Scanner scan = new Scanner(System.in);
+		System.out.print("FoodM name: ");
+        String FoodName = scan.nextLine();
+	}
+	
+	public static void editFoodMaterials() {
+		Scanner scan = new Scanner(System.in);
+		System.out.print("FoodM name: ");
+        String FoodName = scan.nextLine();
+	}
+	
+	public static void viewFoodMaterials() {
+		Scanner scan = new Scanner(System.in);
+		System.out.print("FoodM name: ");
+        String FoodName = scan.nextLine();
+	}
+
+		
 
 }
