@@ -3,6 +3,10 @@ package xManangementSystem;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Food.FoodMaterials;
+import Food.Fruit;
+import Food.Vegetable;
+
 public class FoodMaterialManger {
 
 		ArrayList<FoodMaterials> foods = new ArrayList<FoodMaterials>();
@@ -13,21 +17,36 @@ public class FoodMaterialManger {
 		}
 
 		public  void addFoodMaterials() {
-			FoodMaterials food = new FoodMaterials();
-			
-			System.out.print("FoodM name: ");   
-			food.name = scan.next();  // ì‹ìì¬ ì´ë¦„
-	          
-	        System.out.print("FoodM deadline: ");
-	        food.deadline = scan.next(); // ì‹ìì œ ìœ í†µê¸°í•œ
-	        
-	        System.out.print("FoodM quantity: ");
-	        food.quantity = scan.nextInt(); // ì‹ìì¬ ìˆ˜ëŸ‰
-		    
-		    System.out.print("FoodM origin: ");
-		    food.origin = scan.next(); // ì‹ìì¬ ì›ì‚°ì§€
-		  
-		    foods.add(food);
+			int kind = 0;
+			FoodMaterials food;
+			while(kind != 1 && kind != 2 && kind != 3) {
+				System.out.println("1 - FoodMaterials");
+				System.out.println("2 - Fruit");
+				System.out.println("3 - Vegetable");
+				System.out.print("Select FoodMaterial Kind between 1 and 2: ");
+					kind = scan.nextInt();
+				
+				if(kind == 1) {
+					food = new FoodMaterials();
+					food.getFoodinput(scan);
+				    foods.add(food);
+					break;
+				}
+				else if(kind == 2) {
+					food = new Fruit();
+					food.getFoodinput(scan);
+				    foods.add(food);
+					break;
+				}
+				else if(kind == 3) {
+					food = new Vegetable();
+					food.getFoodinput(scan);
+					foods.add(food);				}
+				else {
+					System.out.println("Select FoodMaterial Kind between 1 and 2: ");
+
+				}
+			}
 		}
 		
 		public  void deleteFoodMaterials() {
@@ -37,7 +56,7 @@ public class FoodMaterialManger {
 	        int index = -1;
 	        
 	        for(int i = 0 ; i<foods.size();i++) {
-	        	if(foods.get(i).name.equals(FoodName)) {
+	        	if(foods.get(i).getName().equals(FoodName)) {
 		        	index = i;
 		        	break;
 		        }
@@ -45,49 +64,51 @@ public class FoodMaterialManger {
 	        
 	        if (index >= 0) {
 	        	foods.remove(index);
-	        	System.out.printf("ì‹ìì¬ %sê°€ ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.\n",FoodName);
+	        	System.out.printf("ÀÔ·ÂÇÏ½Å %s¸¦ »èÀçÇÏ¿´½À´Ï´Ù.\n",FoodName);
 	        }
 	        else {
-	        	System.out.println("ì…ë ¥í•˜ì‹  ì‹ìì¬ë¥¼ ì°¾ì§€ ëª»í•˜ì˜€ìŠµë‹ˆë‹¤.");
+	        	System.out.println("ÀÔ·ÂÇÏ½Å ½ÄÀÚÀç´Â Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.\n");
 	        }
 
 		}
 		
 		public  void editFoodMaterials() {
-			System.out.print("FoodM name: ");
+			System.out.print("¼öÁ¤ÇÒ ½ÄÀÚÀç ÀÌ¸§À» ÀÔ·ÂÇØ ÁÖ¼¼¿ä: ");
 	        String FoodName = scan.next();
 
 	        for(int i = 0 ; i<foods.size();i++) {
 	        	FoodMaterials food = foods.get(i);
-	        	if(food.name.equals(FoodName) ) {
+	        	if(food.getName().equals(FoodName) ) {
 	        	
 	        		int num = -1;
 	        		while(num != 5) {
 	        			System.out.println("** FoodMaterial Info Edit Menu **");
-	        			System.out.println(" 1. ì´ë¦„ ìˆ˜ì •");
-	        			System.out.println(" 2. ìœ í†µê¸°í•œ ìˆ˜ì •");
-	        			System.out.println(" 3. ì €ì¥ëŸ‰ ìˆ˜ì •");
-	        			System.out.println(" 4. ì›ì‚°ì§€ ìˆ˜ì •");
-	        			System.out.println(" 5. ë‚˜ê°€ê¸°");
-	        			System.out.println("1 ~ 5 ì‚¬ì´ì˜ ìˆ«ìë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”: ");
+	        			System.out.println(" 1. ÀÌ¸§ ¼öÁ¤ ");
+	        			System.out.println(" 2. À¯Åë±âÇÑ ¼öÁ¤ ");
+	        			System.out.println(" 3. ÀúÀå·® ¼öÁ¤ ");
+	        			System.out.println(" 4. ¿ø»êÁö ¼öÁ¤ ");
+	        			System.out.println(" 5. ³ª°¡±â");
+	        			System.out.println("1 ~ 5 »çÀÌ¿¡ ¿øÇÏ´Â ¿É¼ÇÀ» ¼±ÅÃÇØÁÖ¼¼¿ä: ");
 	        			num = scan.nextInt();
 	        			if (num == 1) {
-	        				System.out.println("ì‹ìì¬ ì´ë¦„: ");
-	        				food.name = scan.next();
-	        				
-	        				
+	        				System.out.println("¼öÁ¤ÇÒ ½ÄÀÚÀç ÀÌ¸§: ");
+	        				String name = scan.next();
+	        				food.setName(name);
 	        			}
 	        			else if (num == 2) {
-	        				System.out.println("ì‹ìì¬ ìœ í†µê¸°í•œ: ");
-	        				food.deadline = scan.next();
+	        				System.out.println("¼öÁ¤ÇÒ À¯Åë±âÇÑ: ");
+	        				String deadline = scan.next();
+	        				food.setDeadline(deadline);
 	        			}
 	        			else if (num == 3) {
-	        				System.out.println("ì‹ìì¬ ì €ì¥ëŸ‰: ");
-	        				food.quantity = scan.nextInt();
+	        				System.out.println("¼öÁ¤ÇÒ ÀúÀå·®: ");
+	        				String quantity = scan.next();
+	        				food.setQuantity(quantity);
 	        			}
 	        			else if (num == 4) {
-	        				System.out.println("ì‹ìì¬ ì›ì‚°ì§€: ");
-	        				food.origin = scan.next();
+	        				System.out.println("¼öÁ¤ÇÒ ¿ø»êÁö: ");
+	        				String origin = scan.next();
+	        				food.setOrigin(origin);
 	        			}
 	        			else {
 	        				continue;
