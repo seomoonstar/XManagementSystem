@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import Food.FoodMaterials;
 import Food.Fruit;
+import Food.Meat;
 import Food.Vegetable;
 
 public class FoodMaterialManger {
@@ -21,10 +22,12 @@ public class FoodMaterialManger {
 			FoodMaterials food;
 			while(kind != 1 && kind != 2 && kind != 3) {
 				System.out.println("1 - FoodMaterials");
-				System.out.println("2 - Fruit");
-				System.out.println("3 - Vegetable");
+				System.out.println("2 - Vegetable");
+				System.out.println("3 - Fruit");
+				System.out.println("4 - Meat");
 				System.out.print("Select FoodMaterial Kind between 1 and 2: ");
-					kind = scan.nextInt();
+				kind = scan.nextInt();
+				System.out.println();
 				
 				if(kind == 1) {
 					food = new FoodMaterials();
@@ -33,15 +36,22 @@ public class FoodMaterialManger {
 					break;
 				}
 				else if(kind == 2) {
+					food = new Vegetable();
+					food.getFoodinput(scan);
+					foods.add(food);	
+				}
+				else if(kind == 3) {
 					food = new Fruit();
 					food.getFoodinput(scan);
 				    foods.add(food);
 					break;
 				}
-				else if(kind == 3) {
-					food = new Vegetable();
+				else if(kind == 4) {
+					food = new Meat();
 					food.getFoodinput(scan);
-					foods.add(food);				}
+					foods.add(food);
+					break;
+				}
 				else {
 					System.out.println("Select FoodMaterial Kind between 1 and 2: ");
 
@@ -80,56 +90,40 @@ public class FoodMaterialManger {
 	        	FoodMaterials food = foods.get(i);
 	        	if(food.getName().equals(FoodName) ) {
 	        	
-	        		int num = -1;
-	        		while(num != 5) {
-	        			System.out.println("** FoodMaterial Info Edit Menu **");
-	        			System.out.println(" 1. 이름 수정 ");
-	        			System.out.println(" 2. 유통기한 수정 ");
-	        			System.out.println(" 3. 저장량 수정 ");
-	        			System.out.println(" 4. 원산지 수정 ");
-	        			System.out.println(" 5. 나가기");
-	        			System.out.println("1 ~ 5 사이에 원하는 옵션을 선택해주세요: ");
-	        			num = scan.nextInt();
-	        			if (num == 1) {
-	        				System.out.println("수정할 식자재 이름: ");
-	        				String name = scan.next();
-	        				food.setName(name);
-	        			}
-	        			else if (num == 2) {
-	        				System.out.println("수정할 유통기한: ");
-	        				String deadline = scan.next();
-	        				food.setDeadline(deadline);
-	        			}
-	        			else if (num == 3) {
-	        				System.out.println("수정할 저장량: ");
-	        				String quantity = scan.next();
-	        				food.setQuantity(quantity);
-	        			}
-	        			else if (num == 4) {
-	        				System.out.println("수정할 원산지: ");
-	        				String origin = scan.next();
-	        				food.setOrigin(origin);
-	        			}
-	        			else {
-	        				continue;
-	        			}	
-	        		}
+	        		food.editFoodinfo(scan);
 	        		break;
 	        	}
 	        }
 		}
 		
+		public void searchFoodMaterials() {
+			
+			System.out.print("수정할 식자재 이름을 입력해 주세요: ");
+	        String FoodName = scan.next();
+	        int index = -1;
+	        
+	        for(int i = 0 ; i<foods.size();i++) {
+	        	FoodMaterials food = foods.get(i);
+	        	if(food.getName().equals(FoodName) ) {
+	        		food.print_ifo();
+	        		index = 1;
+	        		break;
+	        	}
+	        }
+	        if (index != 1) {
+	        	System.out.printf("입력하신 식자재는 존재하지 않습니다.\n\n");
+	        }
+	        else
+	        	System.out.println();
+		}
+		
 		public  void viewFoodMaterials() {
 //			System.out.print("FoodM name: ");
 //			String FoodName  = scan.next();
-
 	        for(int i = 0 ; i<foods.size();i++) {
 	        	foods.get(i).print_ifo();
 	        }
-	        
+	        System.out.println();	        
 		}
-		
-
-	
 
 }
