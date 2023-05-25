@@ -6,4 +6,5 @@
  *
  */
 module xManangementSystem {
+	requires java.logging;
 }

@@ -1,15 +1,18 @@
-package Food;
+package food;
 
 import java.util.Scanner;
 
-public class Fruit extends Vegetable{
+public class Fruit extends Vegetable {
 		protected String season;
 		
 		
 		public String getSeason() {
 			return season;
 		}
-
+		
+		public Fruit(FoodMaterialKind kind) {
+			super(kind);
+		}
 
 		public void setSeason(String season) {
 			this.season = season;
@@ -22,21 +25,13 @@ public class Fruit extends Vegetable{
 		}
 		
 	public void getFoodinput(Scanner scan) {
-		System.out.print("FoodM name: ");   
-		String name = scan.next();  //
-        this.setName(name);
+		setFoodMaterialName(scan);
         
-        System.out.print("FoodM deadline: ");
-        String deadline = scan.next(); // 
-        this.setDeadline(deadline);
+		setFoodMaterialDeadline(scan);
         
-        System.out.print("FoodM quantity: ");
-        String quantity = scan.next(); // 
-	    this.setQuantity(quantity);
-        
-	    System.out.print("FoodM origin: ");
-	    String origin = scan.next();
-	    this.setOrigin(origin);// 
+		setFoodMaterialQuantity(scan);
+		
+		setFoodMaterialOrigin(scan);
 	    
 	    System.out.println("FoodM organic(Y/N): ");
 	    char organic = scan.next().charAt(0);
@@ -65,24 +60,16 @@ public class Fruit extends Vegetable{
 			num = scan.nextInt();
 			System.out.println();
 			if (num == 1) {
-				System.out.print("수정할 식자재 이름: ");
-				String name = scan.next();
-				setName(name);
+				setFoodMaterialName(scan);
 			}
 			else if (num == 2) {
-				System.out.print("수정할 유통기한: ");
-				String deadline = scan.next();
-				setDeadline(deadline);
+				setFoodMaterialDeadline(scan);
 			}
 			else if (num == 3) {
-				System.out.print("수정할 저장량: ");
-				String quantity = scan.next();
-				setQuantity(quantity);
+				setFoodMaterialQuantity(scan);
 			}
 			else if (num == 4) {
-				System.out.print("수정할 원산지: ");
-				String origin = scan.next();
-				setOrigin(origin);
+				setFoodMaterialOrigin(scan);
 			}
 			else if (num == 5) {
 				System.out.println("유기농 여부 수정: ");
@@ -90,7 +77,7 @@ public class Fruit extends Vegetable{
 				setOrganic(organic);
 			}
 			else if (num == 6) {
-				System.out.println("유기농 여부 수정: ");
+				System.out.println("제철 계절 수정: ");
 				String season = scan.next();
 				setSeason(season);
 			}

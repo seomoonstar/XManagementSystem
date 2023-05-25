@@ -1,17 +1,21 @@
-package Food;
+package food;
 
 import java.util.Scanner;
 
-public class Vegetable extends FoodMaterials{
+public class Vegetable extends FoodMaterials implements FoodInput	{
 	
 	protected char organic;
 	
-		public char getOrganic() {
+	public char getOrganic() {
 		return organic;
 	}
 
 	public void setOrganic(char organic) {
 		this.organic = organic;
+	}
+	
+	public Vegetable(FoodMaterialKind kind) {
+		this.kind = kind;
 	}
 	
 	public void print_ifo() {
@@ -22,29 +26,20 @@ public class Vegetable extends FoodMaterials{
 
 		
 	public void getFoodinput(Scanner scan) {
-		System.out.print("FoodM name: ");   
-		String name = scan.next();  //
-        this.setName(name);
+		setFoodMaterialName(scan);
         
-        System.out.print("FoodM deadline: ");
-        String deadline = scan.next(); // 
-        this.setDeadline(deadline);
+		setFoodMaterialDeadline(scan);
+      
+		setFoodMaterialQuantity(scan);
         
-        System.out.print("FoodM quantity: ");
-        String quantity = scan.next(); // 
-	    this.setQuantity(quantity);
-        
-	    System.out.print("FoodM origin: ");
-	    String origin = scan.next();
-	    this.setOrigin(origin);// 
+		setFoodMaterialOrigin(scan); 
 	    
 	    System.out.print("FoodM organic(Y/N): ");
 	    char organic = scan.next().charAt(0);
 	    this.setOrganic(organic);   
 	    System.out.println();
 	}
-	
-	
+
 	public void editFoodinfo(Scanner scan) {
 		
 		int num = -1;
@@ -61,24 +56,16 @@ public class Vegetable extends FoodMaterials{
 			num = scan.nextInt();
 			System.out.println();
 			if (num == 1) {
-				System.out.print("수정할 식자재 이름: ");
-				String name = scan.next();
-				setName(name);
+				setFoodMaterialName(scan);
 			}
 			else if (num == 2) {
-				System.out.print("수정할 유통기한: ");
-				String deadline = scan.next();
-				setDeadline(deadline);
+				setFoodMaterialDeadline(scan);
 			}
 			else if (num == 3) {
-				System.out.print("수정할 저장량: ");
-				String quantity = scan.next();
-				setQuantity(quantity);
+				setFoodMaterialQuantity(scan);
 			}
 			else if (num == 4) {
-				System.out.print("수정할 원산지: ");
-				String origin = scan.next();
-				setOrigin(origin);
+				setFoodMaterialOrigin(scan);
 			}
 			else if (num == 5) {
 				System.out.println("유기농 여부 수정: ");
