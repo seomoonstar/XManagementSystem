@@ -1,5 +1,9 @@
 package gui;
 
-public class WindowFrame {
+import javax.swing.JFrame;
 
+public class WindowFrame extends JFrame {
+	public WindowFrame() {
+		
+	}
 }
